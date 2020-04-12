@@ -1,3 +1,5 @@
+*.wav
+
 # Visual Studio Code files
 *.code-workspace
 
