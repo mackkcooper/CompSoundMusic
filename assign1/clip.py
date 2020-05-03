@@ -1,7 +1,7 @@
 import math, wave, struct
 
 read = wave.open('sin.wav', 'rb')
-MAX_AMPLITUDE = .9
+MAX_AMPLITUDE = .25
 NUM_CHANNELS = read.getnchannels()
 SAMPLE_SIZE = read.getsampwidth()
 SAMPLE_RATE = read.getframerate()

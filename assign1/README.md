@@ -1,0 +1,4 @@
+MacKenzie K. Cooper
+CS510 - Computers, Sound, & Music
+
+This was implemented in three parts: I first got the wav file creation going, using GarageBand to check my work as I went. Second, I wrote the program for playing the wav file. Third, I got the clipping program done, again using GarageBand to check my work. The process of discovering the various libraries was very straightforward as the documentations provided most of the answers to the questions I had going in. The hardest part was understanding the format of the wav file and differentiating between signed and unsigned integers as the sample size changed. 
