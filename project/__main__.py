@@ -27,11 +27,17 @@ def validateStyle(style):
         error_message += "\t'aug' = augmented chord"
         raise argparse.ArgumentTypeError(error_message)
 
+def validateOctave(octave):
+    if type(octave) != int or octave < 1 or octave > 9:
+        raise argparse.ArgumentTypeError('Octave must be an integer between 1-10 (I recommend not going above 8')
+    else:
+        return octave
+
 # argument parsing
-ap = argparse.ArgumentParser(description='Plays a neat tune!')
+ap = argparse.ArgumentParser(description='A command line synth for playing neat tunes!')
 ap.add_argument('--note', '-n', help='specify the note played when showing styles', default='C', type=validateNote)
-ap.add_argument('--octave', '-o', help='specify the octave of the note or root octave of a tune', type=int, default=5)
-ap.add_argument('--length', '-l', help='specify the length of each note', type=float, default=.25)
+ap.add_argument('--octave', '-o', help='specify the octave of the note or root octave of a tune (int between 1-10) ***NOTE: I recommend not going above 8***', type=int, default=5)
+ap.add_argument('--length', '-l', help='specify the length of each note (seconds)', type=float, default=.23)
 ap.add_argument('--style', '-s', help='specify the kind of style the note will take when you play a file (e.g. note, maj, min, dim, maj7, min7, dom7, sus2, sus4, aug)', default='note', type=validateStyle)
 ap.add_argument('--just', '-j', help='use the just instead of equal scale', default=False, action='store_true')
 ap.add_argument('--file', '-f', help='specify a properly formatted csv file to play instead of all the styles')
