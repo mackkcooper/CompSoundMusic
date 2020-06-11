@@ -2,6 +2,14 @@ import math
 
 BASE_FREQ = 32.703
 
+def get_freq(note, octave, just):
+    if just: return get_just_frequency(note, octave)
+    else: return get_equal_frequency(note, octave)
+
+def modify_freq(root_freq, half_steps_up, just):
+    if just: return just_freqency_steps(root_freq, half_steps_up)
+    else: return equal_freqency_steps(root_freq, half_steps_up)
+
 equal_note_table = {
     'C': 0,'Db': 1, 'D': 2, 'Eb': 3, 'E': 4, 'Fb': 4, 'F': 5, 'Gb': 6, 'G': 7, 'Ab': 8, 'A': 9, 'Bb': 10, 'B': 11, 'Cb': 11
 }
@@ -17,9 +25,9 @@ def get_equal_frequency(note, octave):
 def get_just_frequency(note, octave):
     return BASE_FREQ * just_note_table[note] * math.pow(2, octave - 1)
 
-def equal_freqency_steps(root_freq, i):
-    return root_freq * math.pow(2, i/12)
+def equal_freqency_steps(root_freq, half_steps_up):
+    return root_freq * math.pow(2, half_steps_up/12)
 
 just_multiplier_table = [1, 16/15, 9/8, 6/5, 5/4, 4/3, 45/32, 3/2, 8/5, 5/3, 9/5, 15/8]
-def just_freqency_steps(root_freq, i):
-    return root_freq * just_multiplier_table[i]
+def just_freqency_steps(root_freq, half_steps_up):
+    return root_freq * just_multiplier_table[half_steps_up]
